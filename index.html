@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Boolflix</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+</head>
+<body>
+  <div class="vue" id="app">
+    <input type="text" placeholder="Cerca un titolo" @keyup.enter="search" v-model="searchKey">
+    <button type="button" @click="search">Cerca</button>
+
+    <div class="risultati" v-for="result in searchResult">
+      <div class="titolo">
+        Titolo: {{ result.title }}
+      </div>
+      <div class="titolo-originale">
+        Titolo originale: {{ result.original_title }}
+      </div>
+      <div class="lingua">
+        Lingua: {{ result.original_language }}
+      </div>
+      <div class="voto">
+        Voto: {{ result.vote_average }}
+      </div>
+    </div>
+
+  </div>
+  <script src="js/script.js" charset="utf-8"></script>
+</body>
+</html>
