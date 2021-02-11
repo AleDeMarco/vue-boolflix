@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Boolflix</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 </head>
@@ -16,16 +17,16 @@
 
     <div class="risultati" v-for="result in searchResult">
       <div class="titolo">
-        Titolo: {{ result.title }}
+        Titolo: {{ result.title || result.name }}
       </div>
       <div class="titolo-originale">
-        Titolo originale: {{ result.original_title }}
+        Titolo originale: {{ result.original_title || result.original_name }}
       </div>
       <div class="lingua">
-        Lingua: {{ result.original_language }}
+        Lingua: <img :src="langFlag(result.original_language)" alt="Flag">
       </div>
       <div class="voto">
-        Voto: {{ result.vote_average }}
+        <span class="rating"><i v-for="index in 5" :class="starConverter(index, result.vote_average)"></i></span>
       </div>
     </div>
 
