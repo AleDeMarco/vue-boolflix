@@ -28,6 +28,16 @@
       <div class="voto">
         <span class="rating"><i v-for="index in 5" :class="starConverter(index, result.vote_average)"></i></span>
       </div>
+      <div class="poster">
+        <div v-if="result.poster_path">
+          <img :src="posterSearch + result.poster_path" alt="Poster">
+        </div>
+        <div v-else>
+          <div class="imgFix">
+            <img src="https://lh3.googleusercontent.com/proxy/tLcV8-sUZPg6qVZvmc2C1nf6Y2XK-6AWMZVEm4yWMy8DPdDesZuMDlOtMXkSUcnjUHYxbgFmwq0pqqwxRG6EQud0jUuxaUAOWO5Oe2O8slntS-nQdvwdgi5daHi0xcoyoUw9jQ7raZuJMK2jSA" alt="poster">
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>

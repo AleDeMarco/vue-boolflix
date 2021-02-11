@@ -3,7 +3,8 @@ var app = new Vue({
   data: {
     searchKey: '',
     searchResult: [],
-    flags: ['cs','de','en','es','fr','it','ja','ko','pt']
+    flags: ['cs','de','en','es','fr','it','ja','ko','pt'],
+    posterSearch: 'https://image.tmdb.org/t/p/w342/'
   },
   mounted(){
   },
