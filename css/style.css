@@ -2,17 +2,165 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Bebas Neue', cursive;
 }
 
-.risultati{
-  width: 60%;
-  margin: 20px auto;
-  background-color: #a3a3a3;
-  border: 1px solid black;
-  padding: 20px;
+body{
+  background-color: #141414;
 }
 
-.risultati .lingua img{
+header{
+  width: 100%;
+  height: 80px;
+  background-color: black;
+}
+
+header .logo{
+  line-height: 80px;
+  font-size: 40px;
+  padding-left: 50px;
+  color: #d8262c;
+  float: left;
+}
+
+header .searchbar{
+  float: right;
+  padding: 27px 50px;
+}
+
+header .searchbar input[type = 'text']{
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  padding-left: 15px;
+  outline: none;
+  border: 0;
+}
+
+header .searchbar input[type = 'text']::placeholder{
+  color: white;
+}
+
+header .searchbar button{
+  font-size: 20px;
+  color: white;
+  background-color: black;
+  border: 0;
+  outline: 0;
+}
+
+.row{
+  padding: 0 50px;
+}
+
+.card{
+  position: relative;
+  margin: 10px;
+  width: calc((100% - 60px) / 3);
   display: inline-block;
-  height: 20px;
+  float: left;
+  cursor: pointer;
+}
+
+.card .poster{
+  width: 342px;
+  height: 513px;
+  margin: 0 auto;
+  box-shadow: 0 0 20px #d8262c;
+  position: relative;
+}
+
+.card .poster img.no-poster{
+  width: 342px;
+  padding: 85px 0;
+}
+
+.card .poster .info-box{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  color: white;
+  background-color: rgba(0,0,0,0.9);
+  display: none;
+  padding: 20px 20px;
+}
+
+.card .poster:hover .info-box{
+  display: flex;
+  flex-flow: column;
+}
+
+.card .poster .info-box .titolo{
+  font-size: 25px;
+  color: #d8262c;
+  text-align: center;
+  margin-bottom: 10px;
+  flex: 0 1 auto;
+}
+
+.card .poster .info-box .titolo-originale{
+  font-size: 20px;
+  color: #d8262c;
+  text-align: center;
+  margin-bottom: 30px;
+  flex: 0 1 auto;
+}
+
+.card .poster .info-box .cast{
+  text-align: left;
+  font-size: 20px;
+  color: white;
+  margin-bottom: 30px;
+  font-family: 'Roboto', sans-serif;
+  flex: 0 1 auto;
+}
+
+.card .poster .info-box .cast span{
+  text-align: left;
+  font-size: 20px;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+.card .poster .info-box .trama{
+  height: 200px;
+  overflow-y: auto;
+  text-align: left;
+  font-size: 20px;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  flex: 1 1 auto;
+}
+
+.card .poster .info-box .placeholder{
+  flex: 0 1 100px;
+}
+
+.card .poster .info-box .lingua{
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+}
+
+.card .poster .info-box .voto{
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+}
+
+.card .poster .info-box .lingua img{
+  height: 50px;
+}
+
+.card .poster .info-box .voto .rating i{
+  color: gold;
+  font-size: 25px;
 }

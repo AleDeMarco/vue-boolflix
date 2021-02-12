@@ -7,36 +7,60 @@
   <title>Boolflix</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 </head>
 <body>
   <div class="vue" id="app">
-    <input type="text" placeholder="Cerca un titolo" @keyup.enter="search" v-model="searchKey">
-    <button type="button" @click="search">Cerca</button>
-
-    <div class="risultati" v-for="result in searchResult">
-      <div class="titolo">
-        Titolo: {{ result.title || result.name }}
+    <header>
+      <div class="logo">
+        Netflix
       </div>
-      <div class="titolo-originale">
-        Titolo originale: {{ result.original_title || result.original_name }}
+      <div class="searchbar">
+        <button type="button" @click="search"><i class="fas fa-search"></i></button>
+        <input type="text" placeholder="Cerca un titolo" @keyup.enter="search" v-model="searchKey">
       </div>
-      <div class="lingua">
-        Lingua: <img :src="langFlag(result.original_language)" alt="Flag">
-      </div>
-      <div class="voto">
-        <span class="rating"><i v-for="index in 5" :class="starConverter(index, result.vote_average)"></i></span>
-      </div>
-      <div class="poster">
-        <div v-if="result.poster_path">
-          <img :src="posterSearch + result.poster_path" alt="Poster">
-        </div>
-        <div v-else>
-          <div class="imgFix">
-            <img src="https://lh3.googleusercontent.com/proxy/tLcV8-sUZPg6qVZvmc2C1nf6Y2XK-6AWMZVEm4yWMy8DPdDesZuMDlOtMXkSUcnjUHYxbgFmwq0pqqwxRG6EQud0jUuxaUAOWO5Oe2O8slntS-nQdvwdgi5daHi0xcoyoUw9jQ7raZuJMK2jSA" alt="poster">
+    </header>
+    <div class="row">
+      <div class="card" v-for="result in searchResult">
+        <div class="poster">
+          <img v-if="result.poster_path" :src="posterSearch + result.poster_path" alt="Poster">
+          <img v-else class="no-poster" src="https://lh3.googleusercontent.com/proxy/tLcV8-sUZPg6qVZvmc2C1nf6Y2XK-6AWMZVEm4yWMy8DPdDesZuMDlOtMXkSUcnjUHYxbgFmwq0pqqwxRG6EQud0jUuxaUAOWO5Oe2O8slntS-nQdvwdgi5daHi0xcoyoUw9jQ7raZuJMK2jSA" alt="poster">
+          <div class="info-box">
+            <div class="titolo">
+              Titolo: {{ result.title || result.name }}
+            </div>
+            <div class="titolo-originale">
+              Titolo originale: {{ result.original_title || result.original_name }}
+            </div>
+            <div v-if="result.cast[0]" class="cast">
+              Cast:
+              <span v-for="actor in result.cast">
+                {{ actor }},
+              </span>
+            </div>
+            <div v-else class="cast">
+              Non sappiamo quali attori sono presenti in "{{ result.title || result.name }}"
+            </div>
+            <div v-if="result.overview" class="trama">
+              Trama: {{ result.overview }}
+            </div>
+            <div v-else class="trama">
+              Non è presente la trama, ma puoi sempre avventurarti tu in questo misterioso titolo!
+            </div>
+            <div class="placeholder"></div>
+            <div class="lingua">
+              <img :src="langFlag(result.original_language)" alt="Flag">
+            </div>
+            <div class="voto">
+              <span class="rating"><i v-for="index in 5" :class="starConverter(index, result.vote_average)"></i></span>
+            </div>
           </div>
         </div>
+
+
       </div>
     </div>
 
