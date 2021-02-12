@@ -35,14 +35,11 @@
             <div class="titolo-originale">
               Titolo originale: {{ result.original_title || result.original_name }}
             </div>
-            <div v-if="result.cast[0]" class="cast">
+            <div class="cast">
               Cast:
               <span v-for="actor in result.cast">
                 {{ actor }},
               </span>
-            </div>
-            <div v-else class="cast">
-              Non sappiamo quali attori sono presenti in "{{ result.title || result.name }}"
             </div>
             <div v-if="result.overview" class="trama">
               Trama: {{ result.overview }}
